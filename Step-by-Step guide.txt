@@ -1,0 +1,43 @@
+1) Clone the github repository 
+git clone https://github.com/Jwongjs/Data-Visualization-Project
+cd myproject
+
+2) Create and Activate the Virtual Environment
+python -m venv .venv
+
+*Good practive to activate once folder is opened
+Windows (Command Prompt):
+.venv\Scripts\activate.bat
+Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+macOS/Linux:
+source .venv/bin/activate
+
+3) Push changes (update development of codes)
+    i) Activate virtual Environment
+    ii) Check status of repository (see which files are changed)
+        git status
+    iii) Add changed files to staging 
+        To add all changed files : git add .
+        To add a specific file: git add filename.py
+    iv) Commit the changes  
+        git commit -m "Your descriptive commit message" (explain what changes are made)
+    v) Push changes to the remote repository
+        git push origin master
+
+*Handling merge conflicts
+If someone else has pushed changes to the remote repository while you were working, you might encounter merge conflicts. 
+Here’s how to handle them:
+
+1) Pull the Latest Changes:
+git pull origin master
+
+2) Resolve Any Conflicts:
+Git will highlight the conflicting files. Open these files, manually resolve the conflicts, and then stage the resolved files.
+git add resolved_file.py
+
+3) Commit the Resolved Changes:
+git commit -m "Resolved merge conflicts"
+
+4) Push the Changes:
+git push origin master
