@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\user\Desktop\UOW\Data Science Toolbox\Data visualization assignment\.venv
+set VIRTUAL_ENV=C:\Users\User\OneDrive - UOW Malaysia KDU\May2024 Sem\Data Science Toolbox\Streamlit Dashboard repo\Data-Visualization-Project\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
