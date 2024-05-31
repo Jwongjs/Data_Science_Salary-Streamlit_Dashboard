@@ -1,3 +1,6 @@
+#Other introduction stuff for data science salary related
+#Work Year Distribution in this dataset
+
 import streamlit as st
 import pandas as pd
 
