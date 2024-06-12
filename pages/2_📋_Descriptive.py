@@ -3,8 +3,21 @@
 #The correlation of company size and the salary (Company Size vs Salary)
 #Average salary by Experience Level and Employment Type (Salary vs Experience Level & Employment Type)
 import streamlit as st
-
+import pandas as pd
 st.set_page_config(
     page_title = "Descriptive",
     page_icon = "📋",
 )
+
+st.title("Descriptive Models")
+st.markdown("#### *1. Average Salary by Experience Level and Employment Type*")
+st.divider()
+
+st.markdown("#### *2. Top Highest Salary Job*")
+st.divider()
+
+st.markdown("#### *3. Job Market Saturation of Top 5-10 Highest Salary Professions*")
+st.divider()
+
+st.markdown("#### *4. Correlation between Company Size and Salary*")
+st.divider()
