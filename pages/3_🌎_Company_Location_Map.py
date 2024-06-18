@@ -7,3 +7,4 @@ st.set_page_config(
     page_title = "Company Location Map",
     page_icon = "🌎",
 )
+

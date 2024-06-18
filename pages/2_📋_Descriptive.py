@@ -8,3 +8,4 @@ st.set_page_config(
     page_title = "Descriptive",
     page_icon = "📋",
 )
+
