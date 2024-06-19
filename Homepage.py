@@ -10,6 +10,7 @@ import pandas as pd
 st.set_page_config(
     page_title = "Homepage",
     page_icon = "🏠",
+    layout="wide"
 )
 
 st.title("Data Science Salary Trends")
