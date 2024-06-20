@@ -60,3 +60,4 @@ with col2:
 st.subheader("Dataset")
 st.dataframe(df) #to display the interactive table
 st.write(f"This dataset consist of {df.shape[0]} rows.")
+
