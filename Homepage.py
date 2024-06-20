@@ -32,6 +32,7 @@ import streamlit as st
 import pandas as pd
 import lottie_animations as l
 from streamlit_lottie import st_lottie
+import plotly.express as px
 
 df = pd.read_csv("processed_data.csv")
 
@@ -43,8 +44,6 @@ st.set_page_config(
 
 st.title("💵 Data Science Salary Trends 💵")
 
-
-
 #create columns for a side-by-side layout of the text and lottie animation
 col1, col2 = st.columns([2,1])
 
@@ -52,8 +51,12 @@ col1, col2 = st.columns([2,1])
 with col1:
     st.write("**Welcome to our interactive Data Science Salary Trends 2023 Dashboard!**")
     st.write("This dashboard is designed to provide a comprehensive analysis of salary trends in the data science industry.")
-    st.write("By leveraging the dataset below, we aim to deliver valuable insights into how various factors such as work experience, job titles, and company locations impact salary distributions within the industry.")
+    st.write("By leveraging the dataset below, we are able to deliver valuable insights into how various factors impact salary distributions within the industry.")
 
 #Display lottie animation in the second column
 with col2:
     st_lottie(l.welcome_lottie, loop = True, width = 250, height = 180, key = None)
+    
+st.subheader("Dataset")
+st.dataframe(df) #to display the interactive table
+st.write(f"This dataset consist of {df.shape[0]} rows.")
