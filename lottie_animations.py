@@ -10,3 +10,5 @@ def load_lottiefile(filepath):
         return json.load(f)
     
 welcome_lottie = load_lottiefile(r"lottie_animations\Welcome.json")
+graduation_lottie = load_lottiefile(r"lottie_animations\Graduation.json")
+professional_lottie = load_lottiefile(r"lottie_animations\Professional.json")
