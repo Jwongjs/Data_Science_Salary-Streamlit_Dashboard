@@ -4,12 +4,16 @@
 #Average salary by Experience Level and Employment Type (Salary vs Experience Level & Employment Type)
 import streamlit as st
 import pandas as pd
+from streamlit_lottie import st_lottie 
+import lottie_animations as l
+
 st.set_page_config(
     page_title = "Descriptive",
     page_icon = "📋",
     layout="wide"
 )
 
+# function for retrieving dataset
 @st.cache_data
 def fetch_data():
     df = pd.read_csv("processed_data.csv")
@@ -17,10 +21,25 @@ def fetch_data():
 
     return df
 
-tab1, tab2, tab3, tab4 = st.tabs(["Average Salary by Exp. Level/Emp. Type", 
+#create columns for a side-by-side layout of the text and lottie animation
+col1, col2 = st.columns([1,1])
+
+#Display text in the first column
+with col1:
+    st.subheader("**Part 1: Descriptive Models page**")
+    st.write("Here, our descriptive models will be displayed, that aim to provide insight on past patterns regarding salary trends in the data science industry, including:")
+    st.markdown("* Average Salary by Experience Level and Employment Type")
+    st.markdown("* Highest Salary by Profession")
+    st.markdown("* Job Market Saturation of Top 5-10 Highest Salary Professions")
+    st.markdown("* Correlation between Company Size and Salary")
+#Display lottie animation in the second column
+with col2:
+    st_lottie(l.descriptive_lottie, loop = True, width = 600, height = 350, key = None)
+#tabs for different desc models 
+tab1, tab2, tab3, tab4 = st.tabs(["Average Salary", 
                                   "Highest Salary Profession", 
                                   "Job Market Saturation",
-                                  "Correlation between Company Size and Salary"])
+                                  "Company Size vs Salary"])
 
 with tab1:
     st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
