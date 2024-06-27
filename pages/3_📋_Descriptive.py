@@ -41,7 +41,6 @@ tab1, tab2, tab3, tab4 = st.tabs(["Highest Salary Profession",
                                   "Average Salary"])
 
 with tab1:
-<<<<<<< HEAD
     st.markdown("#### 📈 *Highest Salary by Profession (Top 15)*")
     st.divider()
 
@@ -62,19 +61,3 @@ with tab4:
     st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
     st.divider()
     
-=======
-    st.markdown("#### 📈 *Highest Salary by Profession*")
-    st.divider()
-
-with tab2:
-    st.markdown("#### 🗺️ *Job Market Saturation of Top 5-10 Highest Salary Professions*")
-    st.divider()
-
-with tab3:
-    st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
-    st.divider()
-
-with tab4:
-    st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
-    st.divider()
->>>>>>> 3d0f61e323bf0f3aae1c77a809eff245294ef199
