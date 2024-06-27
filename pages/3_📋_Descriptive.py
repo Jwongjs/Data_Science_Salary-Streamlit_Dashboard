@@ -36,23 +36,23 @@ with col1:
 with col2:
     st_lottie(l.descriptive_lottie, loop = True, width = 600, height = 350, key = None)
 #tabs for different desc models 
-tab1, tab2, tab3, tab4 = st.tabs(["Average Salary", 
-                                  "Highest Salary Profession", 
+tab1, tab2, tab3, tab4 = st.tabs(["Highest Salary Profession", 
                                   "Job Market Saturation",
-                                  "Company Size vs Salary"])
+                                  "Company Size vs Salary",
+                                  "Average Salary"])
 
 with tab1:
-    st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
-    st.divider()
-
-with tab2:
     st.markdown("#### 📈 *Highest Salary by Profession*")
     st.divider()
 
-with tab3:
+with tab2:
     st.markdown("#### 🗺️ *Job Market Saturation of Top 5-10 Highest Salary Professions*")
     st.divider()
 
-with tab4:
+with tab3:
     st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
+    st.divider()
+
+with tab4:
+    st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
     st.divider()
