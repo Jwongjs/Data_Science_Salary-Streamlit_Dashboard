@@ -80,10 +80,61 @@ def display_correlation_size_salary(currency_type):
 
 
 # function for displaying average salary model
-@st.cache_data
+@st.cache_data(experimental_allow_widgets= True)
 def display_average_salary(currency_type):
     st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
     st.divider()
+    
+    col_a, col_b = st.columns([1,1])
+    with col_a:
+        st.write("#### Experience Level")
+        st.write("- **EN**: Entry-Level")
+        st.write("- **EX**: Executive-Level")
+        st.write("- **MI**: Mid-Level")
+        st.write("- **SE**: Senior-Level")
+    with col_b:
+        st.write("#### Employment Type")
+        st.write("- **CT**: Contract")
+        st.write("- **FL**: Freelance")
+        st.write("- **FT**: Full-Time")
+        st.write("- **PT**: Part-Time")
+    
+    ## OPTIONAL CHECKBOXES
+    # col_c, col_d = st.columns([7,3])
+    # with col_d:
+    #     # Selection for experience levels
+    #     exp_levels = ["EN", "EX", "MI", "SE"]
+    #     selected_levels = []
+        
+    #     for level in exp_levels:
+    #         if st.checkbox(f"Show {level}", value = True):
+    #             selected_levels.append(level)
+        
+    # with col_c:
+    if currency_type == "***USD*** us":
+        #Restructuring the dataframe 
+        new_df = df.groupby(["experience_level", "employment_type"])["salary_in_usd"].mean().round(2).reset_index()
+        #new_df = new_df[new_df["experience_level"].isin(selected_levels)]  # Filter based on selected levels
+        new_df = new_df.pivot(index = "experience_level", columns = "employment_type")["salary_in_usd"].fillna(0)
+        
+        #Creating heatmap
+        fig = px.imshow(new_df, x = new_df.columns, y = new_df.index, text_auto = True, 
+                    color_continuous_scale= "Viridis", width = 750, height = 750) 
+        fig.update_layout(xaxis_title="<b>Employment Type</b>", yaxis_title="<b>Experience Level</b>"
+                        ,coloraxis_colorbar=dict(title="Average Salary (USD)"))       
+    else:
+        #Restructuring the dataframe 
+        new_df = df.groupby(["experience_level", "employment_type"])["salary_in_myr"].mean().round(2).reset_index()
+        #new_df = new_df[new_df["experience_level"].isin(selected_levels)]  # Filter based on selected levels
+        new_df = new_df.pivot(index = "experience_level", columns = "employment_type")["salary_in_myr"].fillna(0)
+        
+        #Creating heatmap
+        fig = px.imshow(new_df, x = new_df.columns, y = new_df.index, text_auto = True, 
+                    color_continuous_scale= "Viridis", width = 750, height = 750) 
+        fig.update_layout(xaxis_title="<b>Employment Type</b>", yaxis_title="<b>Experience Level</b>"
+                        ,coloraxis_colorbar=dict(title="Average Salary (MYR)"))       
+
+    st.plotly_chart(fig)
 
 #create columns for a side-by-side layout of the text and lottie animation
 col1, col2 = st.columns([1,1])
@@ -99,7 +150,7 @@ with col1:
 
     # radio button for selecting currency type
     currency_type = st.radio(
-    "Currency Selection",
+    "**Currency Selection**",
     ["***USD*** us", "***MYR*** 🇲🇾"],
     captions = ["United States Dollar", "Malaysian Ringgit"],horizontal=True)
 
@@ -111,7 +162,7 @@ with col2:
 tab1, tab2, tab3, tab4 = st.tabs(["Highest Salary Profession", 
                                   "Job Market Saturation",
                                   "Company Size vs Average Salary",
-                                  "Average Salary"])
+                                  "Average Salary by Exp Level & Emp Type"])
 
 with tab1:
     display_highest_salary_model(currency_type)

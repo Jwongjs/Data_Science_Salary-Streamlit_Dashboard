@@ -1,8 +1,3 @@
-##TO-DO LIST
-#Add graph of postgraduate CS students
-#Add graph of data science specialist 
-#justify why this dashboard/ data visualization is important based on the increasing number of data science based cs students
-
 ##STREAMLIT ELEMENTS
 # x = st.text_input("How are you?")
 
@@ -42,6 +37,11 @@ st.set_page_config(
     layout="wide"
 )
 
+def workYearDistribution_pie_chart():
+    work_year_df = df["work_year"].value_counts().reset_index()
+    work_year_df.columns = ['work_year', 'count']
+    return px.pie(work_year_df, values = 'count', names = 'work_year', title = "Pie Chart")    
+
 #Homepage Opening
 st.title("💵 Data Science Salary Trends 💵")
 st.write("In recent years, there has been a significant surge in interest in data science as a profession. This trend is mainly driven by the increasing reliance on data-driven decision-making across industries.")
@@ -50,7 +50,21 @@ st.subheader("Data Science Platform Market Size to Reach USD 501.03 Bn by 2032")
 st.image("Data-Science-Platform-Market-Size.jpg", caption= "Bar Graph", use_column_width=True)
 st.write("Based on **Precedence Research**, The global data science platforms market was valued at USD 112.12 billion in 2022. Thus, it is expected to grow significantly, reaching about USD 501.03 billion by 2032. This means it will grow at an average annual rate of 16.2% from 2023 to 2032.") 
 
-st.write("As the demand for skilled data scientists continues to grow, it is important to understand salary trends in this field for: ")
+#Data science salary trends over time 
+salary_trend = df[['salary_in_usd', 'work_year']].sort_values(by='work_year')
+fig = px.line(salary_trend, x='work_year', y='salary_in_usd', title='Data Science Salary Trends Over Time')
+fig.update_traces(line=dict(dash='dash'))  # Show legend with title, add line markers, and set dash linestyle
+fig.update_layout(
+    showlegend=True,
+    legend_title="Salary Trends",
+    xaxis_title="Work Year",
+    yaxis_title="Salary in USD",
+    yaxis=dict(range=[0, 160000])  # Set the range for the y-axis
+)
+st.plotly_chart(fig)
+st.write("Within the dataset, it shows that there is an uphill trend since 2021. Subsequently, there are continual positive changes in salary from 2021 to 2022. Ultimately, despite the drop at the initial start of 2023, the steep uphill of trend in salary surge at an all-time high towards the end of the year.")
+
+st.write("***As the demand for skilled data scientists continues to grow, it is important to understand salary trends in this field for:***")
 #1st point for salary trend importance
 
 col3, col4 = st.columns([1,1])
@@ -74,12 +88,9 @@ with col6:
     st.write("For those already in the field, understanding salary trends can highlight opportunities for career advancement and identify areas where additional skills or certifications may lead to higher earnings.")
     st.write("**Benchmarking:** Professionals can benchmark their current salary against industry standards based on our informative dashboard, thus helping them to assess whether their current role is meeting their financial goals.")
  
+#Pie Chart for Work Year Distribution
 st.subheader("Work Year Distribution")   
-#Create pie chart
-work_year_df = df["work_year"].value_counts().reset_index()
-work_year_df.columns = ['work_year', 'count']
-fig = px.pie(work_year_df, values = 'count', names = 'work_year', title = "Pie Chart")
-
+fig = workYearDistribution_pie_chart()
 st.plotly_chart(fig)
 
 st.write("The timeframe for the descriptive and predictive analytics in our dashboard spans the work years from 2020 to 2023.")
