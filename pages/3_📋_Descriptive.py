@@ -28,15 +28,47 @@ def display_highest_salary_model(currency_type):
 
     if currency_type == "***USD*** us":
         # Display bar chart with USD salary
-        high_salary = df.groupby(["job_title"])["salary_in_usd"].max().head(15).sort_values(ascending=False)
-        fig = px.bar(high_salary, color='salary_in_usd', y="salary_in_usd",
-                labels={'job_title':'Profession', "salary_in_usd":"Highest Salary (USD)"}, color_continuous_scale="Mint", height=600,text="salary_in_usd")
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_usd"].max().sort_values(ascending=False).head(15)
+        fig = px.bar(top_15_high_sal, 
+                     color='salary_in_usd', 
+                     x="salary_in_usd",
+                     labels={'job_title':'Profession', "salary_in_usd":"Highest Salary (USD)"}, 
+                     color_continuous_scale="Mint", 
+                     height=700,
+                     width=1200,
+                     text="salary_in_usd",
+                     orientation="h")
+        fig.update_traces(texttemplate='$%{text:.3s}')
     else:
         # Display bar chart with MYR salary
-        high_salary = df.groupby(["job_title"])["salary_in_myr"].max().head(15).sort_values(ascending=False)
-        fig = px.bar(high_salary, color='salary_in_myr', y="salary_in_myr",
-                labels={'job_title':'Profession', "salary_in_myr":"Highest Salary (MYR)"}, color_continuous_scale="amp", height=600,text="salary_in_myr")
-        
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].max().sort_values(ascending=False).head(15)
+        fig = px.bar(top_15_high_sal, 
+                     color='salary_in_myr', 
+                     x="salary_in_myr",
+                     labels={'job_title':'Profession', "salary_in_myr":"Highest Salary (MYR)"}, 
+                     color_continuous_scale="amp", 
+                     height=700,
+                     width=1200,
+                     text="salary_in_myr",
+                     orientation="h")
+        fig.update_traces(texttemplate='RM%{text:.3s}')
+    
+    fig.update_traces(
+        textfont = dict(
+            family = "Arial MT Extra Bold",   
+            size=20,
+            color = "black"   
+        ),
+        width = 0.6,
+        textangle = 0
+    )
+
+    fig.update_layout(
+        bargap=0.2,
+        legend = dict(font=dict(size=15)),
+        xaxis = dict(tickfont=dict(size=15)),
+        yaxis = dict(tickfont=dict(size=15))
+    )
     st.plotly_chart(fig)
 
 # function for job market saturation model
@@ -44,41 +76,94 @@ def display_highest_salary_model(currency_type):
 def display_job_market_saturation(currency_type):
     st.markdown("#### 🗺️ *Job Market Saturation of Top 15 Highest Salary Professions*")
 
-    # I'm.. not sure how to make this scatter geo plot better atm, WIP
     if currency_type == "***USD*** us":
-        top_15_jobs = df.groupby(["job_title"])["salary_in_usd"].max().sort_values(ascending=False).head(15)
-        job_market = df[df["job_title"].isin(top_15_jobs.index)]
-        fig = px.scatter_geo(job_market, locations="country_name",
-                     size="salary_in_usd", locationmode="country names",
-                     title="Job Market Saturation of Top 15 Highest Salary Professions", height=600,
-                     hover_data = ["job_title","salary_in_usd"]
-                     )
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_usd"].max().sort_values(ascending=False).head(15)
     else:
-        top_15_jobs = df.groupby(["job_title"])["salary_in_myr"].max().sort_values(ascending=False).head(15)
-        job_market = df[df["job_title"].isin(top_15_jobs.index)]
-        fig = px.scatter_geo(job_market, locations="country_name",
-                     size="salary_in_myr", locationmode="country names",
-                     title="Job Market Saturation of Top 15 Highest Salary Professions", height=600,
-                     hover_data = ["job_title","salary_in_myr"]
-                     )
-        
-    # alternate scatter plot chart, this also sucks but I'm tired
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].max().sort_values(ascending=False).head(15)
 
-    fig2 = px.scatter_matrix(job_market, dimensions=["job_title","country_name"], color="job_title", height=900)
-    fig2.update_traces(diagonal_visible=False)
+    job_market = df[df["job_title"].isin(top_15_high_sal.index)]
 
-    # attempt at a bar chart
-    fig3 = px.bar(job_market, x = "job_title", y="country_name", color="country_name", height=900)
+    # Replacing countries with less than 20 entries with "Other Countries"
+    country_counts = job_market["country_name"].value_counts()
+    countries_to_replace = country_counts[country_counts < 20].index
+    job_market.loc[df["country_name"].isin(countries_to_replace), "country_name"] = "Other Countries"
+
+    fig = px.pie(job_market, 
+                 values=job_market.country_name.value_counts().values, 
+                 names=job_market.country_name.value_counts().index, 
+                 height=500,
+                 width=1200
+                 )
+    
+    fig.update_traces(
+        textfont=dict(
+            family="Arial MT",  
+            size=22,       
+            color="white"   
+        )
+    )
+
+    fig.update_layout(
+        legend=dict(font=dict(family="Arial MT Extra Bold",size=20))
+    )
     st.plotly_chart(fig)
-    st.plotly_chart(fig2)
-    st.plotly_chart(fig3)
 
 # function for correlation of size & salary model
 @st.cache_data
 def display_correlation_size_salary(currency_type):
-    st.markdown("#### 🏢 *Correlation between Company Size and Average Salary*")
+    st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
 
+    if currency_type == "***USD*** us":
+        top_15_avrg_sal = df.groupby(["job_title"])["salary_in_usd"].mean().sort_values(ascending=False).head(15)
 
+        job_market = df[df["job_title"].isin(top_15_avrg_sal.index)]
+        job_market.loc[:,"company_size"] = job_market.company_size.replace({"S":"Small","M":"Medium","L":"Large"})
+
+        avrg_sal_by_comp_size = job_market.groupby(["company_size"])["salary_in_usd"].mean()
+
+        fig = px.bar(avrg_sal_by_comp_size, color=avrg_sal_by_comp_size.index, y="salary_in_usd",
+                labels={'company_size':'Company Size', "salary_in_usd":"Average Salary (USD)"}, 
+                color_discrete_map={"S":"#74FF00", "M":"#28BBFF", "L":"#FA3819"}, 
+                height=600,
+                width=900,
+                text="salary_in_usd",
+                category_orders={"company_size": ["Small", "Medium", "Large"]})
+        fig.update_traces(texttemplate='$%{text:.3s}')
+    else:
+        top_15_avrg_sal = df.groupby(["job_title"])["salary_in_myr"].mean().sort_values(ascending=False).head(15)
+
+        job_market = df[df["job_title"].isin(top_15_avrg_sal.index)]
+        job_market.loc[:,"company_size"] = job_market.company_size.replace({"S":"Small","M":"Medium","L":"Large"})
+
+        avrg_sal_by_comp_size = job_market.groupby(["company_size"])["salary_in_myr"].mean()
+
+        fig = px.bar(avrg_sal_by_comp_size, color=avrg_sal_by_comp_size.index, y="salary_in_myr",
+                labels={'company_size':'Company Size', "salary_in_myr":"Average Salary (MYR)"}, 
+                color_discrete_map={"S":"#74FF00", "M":"#28BBFF", "L":"#FA3819"}, 
+                height=600,
+                width=900,
+                text="salary_in_myr",
+                category_orders={"company_size": ["Small", "Medium", "Large"]})
+
+        fig.update_traces(texttemplate='RM%{text:.3s}')
+
+    fig.update_traces(
+        textfont = dict(
+            family="Arial MT Extra Bold",  
+            size=20,       
+            color="black"   
+        ),
+        width = 0.4
+    )
+
+    fig.update_layout(
+        bargap = 0.01,
+        legend = dict(font=dict(size=15)),
+        xaxis = dict(tickfont=dict(size=15)),
+        yaxis = dict(tickfont=dict(size=15))
+    )
+    st.plotly_chart(fig)
+    
 # function for displaying average salary model
 @st.cache_data(experimental_allow_widgets= True)
 def display_average_salary(currency_type):
