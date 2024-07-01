@@ -82,16 +82,10 @@ def display_job_market_saturation(currency_type):
         top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].max().sort_values(ascending=False).head(15)
 
     job_market = df[df["job_title"].isin(top_15_high_sal.index)]
-
-    # Replacing countries with less than 20 entries with "Other Countries"
-    country_counts = job_market["country_name"].value_counts()
-    countries_to_replace = country_counts[country_counts < 20].index
-    job_market.loc[df["country_name"].isin(countries_to_replace), "country_name"] = "Other Countries"
-
     fig = px.pie(job_market, 
-                 values=job_market.country_name.value_counts().values, 
-                 names=job_market.country_name.value_counts().index, 
-                 height=500,
+                 values=job_market.job_title.value_counts().values, 
+                 names=job_market.job_title.value_counts().index, 
+                 height=800,
                  width=1200
                  )
     
