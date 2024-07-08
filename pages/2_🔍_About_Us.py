@@ -22,7 +22,7 @@ with col1:
 
 #Display lottie animation in the second column
 with col2:
-    st_lottie(l.welcome_lottie, loop = True, width = 600, height = 350, key = None)
+    st_lottie(l.welcome_lottie, loop = True, width = 600, height = 250, key = None)
     
 st.subheader("Preprocessed Data Science Salary Trends Dataset")
 st.dataframe(df) #to display the interactive table

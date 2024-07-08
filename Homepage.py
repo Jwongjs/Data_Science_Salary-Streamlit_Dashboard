@@ -75,13 +75,13 @@ with col3:
     st.write("**Market Competitiveness:** Job seekers can use this information to negotiate better salaries and benefits, ensuring they receive compensation that reflects their skills and the current market demand.")
 
 with col4:
-    st_lottie(l.graduation_lottie, loop = True, width = 600, height = 350, key = None)
+    st_lottie(l.graduation_lottie, loop = True, width = 600, height = 250, key = None)
 
 #2nd point for salary trend importance
 col5, col6  = st.columns([1,1])
 
 with col5:
-    st_lottie(l.professional_lottie, loop = True, width = 600, height = 350, key = None)
+    st_lottie(l.professional_lottie, loop = True, width = 600, height = 250, key = None)
 
 with col6:
     st.subheader("*Industry Professionals*")
