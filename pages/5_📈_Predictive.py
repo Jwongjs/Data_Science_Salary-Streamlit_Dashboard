@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 df = pd.read_csv("processed_data.csv")
 
 st.set_page_config(
-    page_title = "Predictive",
+    page_title = "Salary Prediction",
     page_icon = "📈",
     layout="wide"
 )
@@ -36,8 +36,8 @@ def page_intro_section():
 
 def select_box_section():
     #Job Title and Country
-    job_title = st.selectbox("Select Job Title:", df["job_title"].unique())
-    country = st.selectbox("Select Country:", df["country_name"].unique())
+    job_title = st.selectbox("Select Job Title:", df["job_title"].sort_values().unique())
+    country = st.selectbox("Select Country:", df["country_name"].sort_values().unique())
 
     #Experience Level, Employment Type and Company Size
     col1, col2, col3 = st.columns([1, 1, 1])
@@ -58,10 +58,10 @@ def select_box_section():
             st.write("- **SE**: Senior-Level")
         with col_b:
             st.write("#### Employment Type")
-            st.write("- **CT**: Contract")
-            st.write("- **FL**: Freelance")
             st.write("- **FT**: Full-Time")
             st.write("- **PT**: Part-Time")
+            st.write("- **CT**: Contract")
+            st.write("- **FL**: Freelance")
         with col_c:
             st.write("#### Company Size")
             st.write("- **L**: Large")
@@ -107,7 +107,7 @@ captions = ["United States Dollar", "Malaysian Ringgit"],horizontal=True)
 
 st.divider()
 
-st.write("*The prediction is solely based on the values provided in dataset.")
+st.write("*Prediction is not 100% accurate. The accuracy is solely based on the values provided in dataset.")
 
 job_title, country, experience_level, employment_type, company_size = select_box_section()
 
@@ -117,8 +117,7 @@ if button_clicked:
     feature_df = encode_process(job_title, country, experience_level, employment_type, company_size) 
     
     salary_prediction = salary_regressor.predict(feature_df)
-    print(salary_prediction)
-    
+
     st_lottie(l.money_lottie, loop=False, width=450, height=200, key=None)
     
     if currency_type == "***USD*** us":
