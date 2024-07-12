@@ -47,7 +47,7 @@ st.title("💵 Data Science Salary Trends 💵")
 st.write("In recent years, there has been a significant surge in interest in data science as a profession. This trend is mainly driven by the increasing reliance on data-driven decision-making across industries.")
 
 st.subheader("Data Science Platform Market Size to Reach USD 501.03 Bn by 2032")
-st.image("Data-Science-Platform-Market-Size.jpg", caption= "Bar Graph", use_column_width=True)
+st.image("Data-Science-Platform-Market-Size.jpg", caption= "Bar Graph")
 st.write("Based on **Precedence Research**, The global data science platforms market was valued at USD 112.12 billion in 2022. Thus, it is expected to grow significantly, reaching about USD 501.03 billion by 2032. This means it will grow at an average annual rate of 16.2% from 2023 to 2032.") 
 
 #Data science salary trends over time 
