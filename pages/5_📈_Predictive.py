@@ -1,5 +1,3 @@
-#Data professionals salary trends in the next 5-10 years 
-#features are scalable for model to be more advance
 import pandas as pd
 import streamlit as st
 from streamlit_lottie import st_lottie
