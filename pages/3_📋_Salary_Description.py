@@ -25,9 +25,6 @@ df = fetch_data()
 # function for displaying highest salary model
 @st.cache_data
 def display_highest_salary_model(currency_type):
-    st.markdown("#### 📈 *Highest Average Salary by Profession (Top 15)*")
-    st.divider()
-    
     if currency_type == "***USD*** us":
         # Display bar chart with USD salary
         top_15_high_sal = df.groupby(["job_title"])["salary_in_usd"].mean().sort_values(ascending=False).head(15)
@@ -76,42 +73,36 @@ def display_highest_salary_model(currency_type):
 # function for job market saturation model
 @st.cache_data
 def display_job_market_saturation(currency_type):
-    st.markdown("#### 🗺️ *Job Market Saturation of Top 15 Highest Salary Professions*")
-    st.divider()
-    
     if currency_type == "***USD*** us":
-        top_15_high_sal = df.groupby(["job_title"])["salary_in_usd"].max().sort_values(ascending=False).head(15)
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_usd"].mean().sort_values(ascending=False).head(15)
     else:
-        top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].max().sort_values(ascending=False).head(15)
+        top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].mean().sort_values(ascending=False).head(15)
 
     job_market = df[df["job_title"].isin(top_15_high_sal.index)]
     #Can try sunburst chart
     fig = px.pie(job_market, 
                  values=job_market.job_title.value_counts().values, 
                  names=job_market.job_title.value_counts().index, 
-                 height=800,
+                 height=600,
                  width=1200
                  )
     
     fig.update_traces(
         textfont=dict(
             family="Arial MT",  
-            size=22,       
+            size=12,       
             color="white"   
         )
     )
 
     fig.update_layout(
-        legend=dict(font=dict(family="Arial MT Extra Bold",size=20))
+        legend=dict(font=dict(family="Arial MT Extra Bold",size=15))
     )
     st.plotly_chart(fig)
 
 # function for correlation of size & salary model
 @st.cache_data
 def display_correlation_size_salary(currency_type):
-    st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
-    st.divider()
-    
     if currency_type == "***USD*** us":
         top_15_avrg_sal = df.groupby(["job_title"])["salary_in_usd"].mean().sort_values(ascending=False).head(15)
 
@@ -256,12 +247,24 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Highest Average Salary Profession",
                                   "Entry-Level Job Distribution"])
 
 with tab1:
+    st.markdown("#### 📈 *Highest Average Salary by Profession (Top 15)*")
+    st.write("- Horizontal bar chart that shows the top 15 highest average monthly salary of job professions")
+    st.write("- Data Science Tech Lead clearly in the lead with \$375k, most top jobs are within the \$175k to \$220k range")
+    st.divider()
     display_highest_salary_model(currency_type)
 
 with tab2:
+    st.markdown("#### 🗺️ *Job Market Saturation of Top 15 Highest Salary Professions*")
+    st.write("- Pie chart showing the job market saturation of the top 15 professions with highest average salary")
+    st.write("- Over 50% of jobs within the market are Applied Scientist or Data Science Manager positions")
+    st.divider()
     display_job_market_saturation(currency_type)
 
 with tab3:
+    st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
+    st.write("- Bar chart showing the correlation between company size, and average salary of the job positions")
+    st.write("- Medium and large sized companies seem to have higher average salaries overall at \$192k/\$186k, with smaller companies offering lower salaries")
+    st.divider()
     display_correlation_size_salary(currency_type)
 
 with tab4:
