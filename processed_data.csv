@@ -1832,7 +1832,7 @@ work_year,experience_level,employment_type,job_title,salary,salary_currency,sala
 2022,EN,FT,Machine Learning Research Engineer,63000,EUR,66192,DE,L,311764,Germany
 2022,EN,FT,3D Computer Vision Researcher,50000,USD,50000,CR,S,235500,Costa Rica
 2022,EN,FT,Data Science Consultant,26000,EUR,27317,ES,L,128663,Spain
-2022,EN,FL,Machine Learning Engineer,100000,USD,100000,IR,M,471000,"Iran, Islamic Republic of"
+2022,EN,FL,Machine Learning Engineer,100000,USD,100000,IR,M,471000,"Iran"
 2022,EN,FT,Data Engineer,160000,USD,160000,US,M,753600,United States
 2022,EN,FT,Data Engineer,135000,USD,135000,US,M,635850,United States
 2022,EN,FT,Data Scientist,80000,USD,80000,US,M,376800,United States
@@ -1912,7 +1912,7 @@ work_year,experience_level,employment_type,job_title,salary,salary_currency,sala
 2022,EN,FT,Data Engineer,120000,USD,120000,US,M,565200,United States
 2022,EN,FT,Computer Vision Engineer,125000,USD,125000,US,M,588750,United States
 2022,EN,FT,ML Engineer,20000,EUR,21013,PT,L,98971,Portugal
-2022,EX,FT,Data Science Manager,106000,USD,106000,RU,L,499260,Russian Federation
+2022,EX,FT,Data Science Manager,106000,USD,106000,RU,L,499260,Russia
 2022,EX,FT,Data Engineer,200000,USD,200000,US,M,942000,United States
 2022,EX,FT,Data Engineer,145000,USD,145000,US,M,682950,United States
 2022,EX,FT,Data Engineer,310000,USD,310000,US,M,1460100,United States
@@ -2178,7 +2178,7 @@ work_year,experience_level,employment_type,job_title,salary,salary_currency,sala
 2022,MI,FT,Data Scientist,96000,GBP,118208,GB,M,556759,United Kingdom
 2022,MI,FT,Data Scientist,90000,GBP,110820,GB,M,521962,United Kingdom
 2022,MI,FT,Applied Machine Learning Scientist,75000,USD,75000,US,M,353250,United States
-2022,MI,CT,Analytics Engineer,7500,USD,7500,BO,M,35325,"Bolivia, Plurinational State of"
+2022,MI,CT,Analytics Engineer,7500,USD,7500,BO,M,35325,"Bolivia"
 2022,MI,FT,Data Analyst,113000,USD,113000,US,L,532230,United States
 2022,MI,FT,Data Analytics Consultant,113000,USD,113000,US,L,532230,United States
 2022,MI,FT,Product Data Analyst,140000,USD,140000,US,M,659400,United States
@@ -3511,8 +3511,8 @@ work_year,experience_level,employment_type,job_title,salary,salary_currency,sala
 2021,EN,PT,AI Scientist,12000,USD,12000,US,S,56520,United States
 2021,EX,FT,Director of Data Science,250000,USD,250000,US,L,1177500,United States
 2021,EX,FT,Director of Data Science,110000,EUR,130026,DE,M,612422,Germany
-2021,EX,FT,Head of Data Science,85000,USD,85000,RU,M,400350,Russian Federation
-2021,EX,FT,Head of Data,230000,USD,230000,RU,L,1083300,Russian Federation
+2021,EX,FT,Head of Data Science,85000,USD,85000,RU,M,400350,Russia
+2021,EX,FT,Head of Data,230000,USD,230000,RU,L,1083300,Russia
 2021,EX,FT,Director of Data Science,130000,EUR,153667,PL,L,723771,Poland
 2021,EX,FT,Head of Data,235000,USD,235000,US,L,1106850,United States
 2021,EX,FT,BI Data Analyst,150000,USD,150000,US,L,706500,United States
@@ -3598,7 +3598,7 @@ work_year,experience_level,employment_type,job_title,salary,salary_currency,sala
 2021,MI,FT,Data Scientist,76760,EUR,90734,DE,L,427357,Germany
 2021,MI,FL,Machine Learning Scientist,12000,USD,12000,PK,M,56520,Pakistan
 2021,MI,FT,Machine Learning Engineer,74000,USD,74000,JP,S,348540,Japan
-2021,MI,FT,Big Data Engineer,18000,USD,18000,MD,S,84780,"Moldova, Republic of"
+2021,MI,FT,Big Data Engineer,18000,USD,18000,MD,S,84780,"Moldova"
 2021,MI,FT,Data Scientist,130000,USD,130000,US,L,612300,United States
 2021,MI,FT,Data Scientist,39600,EUR,46809,ES,M,220470,Spain
 2021,MI,FT,Data Scientist,115000,USD,115000,US,L,541650,United States

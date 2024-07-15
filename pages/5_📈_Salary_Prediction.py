@@ -92,7 +92,7 @@ def encode_process(job_title, country, experience_level, employment_type, compan
     return feature_df
     
 #Import regressor model 
-model_file_path = r"C:\Users\user\Desktop\UOW\Data Science Toolbox\Data visualization assignment\Salary Regressor Model\rf_regressor.pkl"
+model_file_path = r"Salary Regressor Model\rf_regressor.pkl"
 with open(model_file_path, 'rb') as f:
     salary_regressor = pickle.load(f)
 
