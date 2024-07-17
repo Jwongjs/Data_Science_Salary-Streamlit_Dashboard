@@ -4,6 +4,8 @@ from streamlit_lottie import st_lottie
 import lottie_animations as l
 import plotly_express as px
 import matplotlib.pyplot as plt
+from streamlit_plotly_events import plotly_events
+
 
 map_scope = {"NA":"north america","SA":"south america","AS":"asia","AF":"africa","EU":"europe"}
 map_scope_title = {"NA":"North America","SA":"South America","AS":"Asia","AF":"Africa","EU":"Europe"}
@@ -19,25 +21,27 @@ def fetch_data():
     return df
 df = fetch_data()
 
-def handle_click(trace, points, state):
-    if points.point_inds:
-        selected_country = grouped_df.iloc[points.point_inds[0]]['country_name']
-        st.write(f"You clicked on {selected_country}")
-
-def display_map(map_scope_rb):
+def display_map(map_scope_rb, currency_type):
     st.subheader(f"Map of Company Locations: {map_scope_title[map_scope_rb]}")
-    grouped_df = df.groupby('country_name', as_index=False).agg({'salary_in_usd': 'mean'})
+    if currency_type == "***USD*** us":
+        grouped_df = df.groupby('country_name', as_index=False).agg({'salary_in_usd': 'mean'})
+        currency_type = "salary_in_usd"
+    else:
+        grouped_df = df.groupby('country_name', as_index=False).agg({'salary_in_myr': 'mean'})
+        currency_type = "salary_in_myr" 
 
     fig = px.choropleth(grouped_df, locations="country_name",
                          scope=map_scope[map_scope_rb],
                          locationmode="country names",
-                         color="salary_in_usd",
+                         color=currency_type,
                          width=1300,
                          height=800,
                         )
     fig.update_traces(marker_line_width=0.5)
-    fig.update_layout(clickmode='event+select')
-    st.plotly_chart(fig, use_container_width=True)
+
+    st.plotly_chart(fig)
+
+
 
 col1, col2 = st.columns([2,1])
 with col1:
@@ -47,7 +51,12 @@ with col1:
              "**Map Scope Selection**",
              ["NA", "EU", "SA", "AF","AS"],
              captions = ["North America", "Europe", "South America","Africa", "Asia"],horizontal=True)
+       
+       currency_type = st.radio(
+        "**Currency Selection**",
+        ["***USD*** us", "***MYR*** 🇲🇾"],
+        captions = ["United States Dollar", "Malaysian Ringgit"],horizontal=True)
        with col2:
            st_lottie(l.ai_lottie, loop = False, width = 300, height = 300, key = None)
 
-display_map(map_scope_rb)
+display_map(map_scope_rb, currency_type)
