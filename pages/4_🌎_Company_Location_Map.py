@@ -45,7 +45,7 @@ def display_map(map_scope_rb, currency_type):
                          locationmode="country names",
                          color=currency_type,
                          width=1300,
-                         height=800,
+                         height=500,
                          color_continuous_scale="bupu",
                          fitbounds="locations"
                         )
