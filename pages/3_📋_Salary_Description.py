@@ -155,7 +155,7 @@ def display_correlation_size_salary(currency_type):
     st.plotly_chart(fig)
     
 # function for displaying average salary model
-@st.cache_data(experimental_allow_widgets= True)
+@st.cache_data()
 def display_average_salary(currency_type):
     ## OPTIONAL CHECKBOXES
     # col_c, col_d = st.columns([7,3])
