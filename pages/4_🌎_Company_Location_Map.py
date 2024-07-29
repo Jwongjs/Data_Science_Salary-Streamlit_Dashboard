@@ -4,7 +4,6 @@ import pandas as pd
 from streamlit_lottie import st_lottie 
 import lottie_animations as l
 import plotly_express as px
-import matplotlib.pyplot as plt
 from streamlit_plotly_events import plotly_events
 
 

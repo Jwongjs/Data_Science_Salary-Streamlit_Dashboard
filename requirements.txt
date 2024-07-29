@@ -3,4 +3,4 @@ pandas
 streamlit-lottie
 plotly.express
 streamlit_plotly_events
-sklearn.preprocessing
+sklearn
