@@ -2,7 +2,6 @@ streamlit
 pandas
 streamlit-lottie
 plotly.express
-lottie_animations
 matplotlib.pyplot
 streamlit_plotly_events
 pickle
