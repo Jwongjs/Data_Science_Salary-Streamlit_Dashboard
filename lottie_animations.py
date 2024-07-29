@@ -8,10 +8,10 @@ def load_lottiefile(filepath):
     with open(filepath) as f:
         return json.load(f)
     
-welcome_lottie = load_lottiefile(r"lottie_animations\Welcome.json")
-graduation_lottie = load_lottiefile(r"lottie_animations\Graduation.json")
-professional_lottie = load_lottiefile(r"lottie_animations\Professional.json")
-descriptive_lottie = load_lottiefile(r"lottie_animations\Description - Graph.json")
-ai_lottie = load_lottiefile(r"lottie_animations\AI.json")
-money_lottie = load_lottiefile(r"lottie_animations\Money.json")
-map_lottie = load_lottiefile(r"lottie_animations\CompanyMap.json")
+welcome_lottie = load_lottiefile("lottie_animations/Welcome.json")
+graduation_lottie = load_lottiefile("lottie_animations/Graduation.json")
+professional_lottie = load_lottiefile("lottie_animations/Professional.json")
+descriptive_lottie = load_lottiefile("lottie_animations/Description - Graph.json")
+ai_lottie = load_lottiefile("lottie_animations/AI.json")
+money_lottie = load_lottiefile("lottie_animations/Money.json")
+map_lottie = load_lottiefile("lottie_animations/CompanyMap.json")
