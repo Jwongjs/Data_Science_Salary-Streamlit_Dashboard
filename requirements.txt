@@ -4,3 +4,4 @@ streamlit-lottie
 plotly.express
 streamlit_plotly_events
 scikit-learn
+matpotlib
