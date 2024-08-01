@@ -5,3 +5,4 @@ plotly.express
 streamlit_plotly_events
 scikit-learn
 matplotlib
+xgboost
