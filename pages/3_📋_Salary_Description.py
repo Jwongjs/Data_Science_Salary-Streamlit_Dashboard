@@ -294,6 +294,9 @@ with tab4:
             st.write("- **FL**: Freelance")
             st.write("- **FT**: Full-Time")
             st.write("- **PT**: Part-Time")
+    
+    st.write("The heatmap above shows the highest average salary at $416k for \"Executive-Level\" experience and \"Contract\" employment. This may suggest that \"Contract\" employment type is employed for certain projects and make more frequent top-level decisions with \"Executive-Level\" position.")
+    st.write("On the other hand, the lowest average salary is at $100k for \"Entry-Level\" experience and \"Part-Time\" employment. This may suggest that \"Part-Time\" employment type is employed for less demanding and basic workloads in which they may also be supervised at the \"Entry-Level\" position.")
             
 with tab5:
     st.markdown("#### 📚 *Entry-Level Job Distribution*")
@@ -301,4 +304,7 @@ with tab5:
     st.write("- Including the count and average salary for each job title")
     st.divider()
     display_entry_level_job(currency_type)
+    
+    st.write("The treemap above shows that the most sought-after entry-level job is Data Engineer, with a count of 66 and an average salary of $91,527. This may suggest that Data Analyst is a popular entry-level job for aspiring postgraduates which may also allow for further career growth.")
+    st.write("Even though Machine Learning Engineer has a higher average salary of $94,276, it has a lower count of 21. This may suggest that Machine Learning Engineer is a more specialized entry-level job that requires more experience and knowledge in the field.")
     
