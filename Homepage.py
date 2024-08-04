@@ -51,7 +51,7 @@ st.image("Data-Science-Platform-Market-Size.jpg", caption= "Bar Graph")
 st.write("Based on **Precedence Research**, The global data science platforms market was valued at USD 112.12 billion in 2022. Thus, it is expected to grow significantly, reaching about USD 501.03 billion by 2032. This means it will grow at an average annual rate of 16.2% from 2023 to 2032.") 
 
 #Data science salary trends over time 
-salary_trend = df[['salary_in_usd', 'work_year']].sort_values(by='work_year')
+salary_trend = df.groupby('work_year')['salary_in_usd'].mean().reset_index()
 fig = px.line(salary_trend, x='work_year', y='salary_in_usd', title='Data Science Salary Trends Over Time')
 fig.update_traces(line=dict(dash='dash'))  # Show legend with title, add line markers, and set dash linestyle
 fig.update_layout(
@@ -62,7 +62,7 @@ fig.update_layout(
     yaxis=dict(range=[0, 200000])  # Set the range for the y-axis
 )
 st.plotly_chart(fig)
-st.write("Within the dataset, it shows that there is an uphill trend since 2021. Subsequently, there are continual positive changes in salary from 2021 to 2022. Ultimately, despite the drop at the initial start of 2023, the steep uphill of trend in salary surge at an all-time high towards the end of the year.")
+st.write("Within the dataset, it shows that there is an uphill trend since 2020. Subsequently, there are continual slight positive changes in salary from 2021 to 2022. Ultimately, despite the drop at the initial start of 2023, the steep uphill of trend in salary surge at an all-time high towards the end of the year.")
 
 st.write("***As the demand for skilled data scientists continues to grow, it is important to understand salary trends in this field for:***")
 #1st point for salary trend importance
