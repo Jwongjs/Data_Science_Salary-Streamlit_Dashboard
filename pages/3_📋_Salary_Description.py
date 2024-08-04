@@ -247,24 +247,30 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Highest Average Salary Profession",
 
 with tab1:
     st.markdown("#### 📈 *Highest Average Salary by Profession (Top 15)*")
-    st.write("- Horizontal bar chart that shows the top 15 highest average monthly salary of job professions")
-    st.write("- Data Science Tech Lead clearly in the lead with \$375k, most top jobs are within the \$175k to \$220k range")
+    st.write("- Horizontal bar chart that shows the top 15 highest average annual salary of job professions")
+    st.write("- Color intensity represents the salary amount, shade darkens as salary increases")
     st.divider()
     display_highest_salary_model(currency_type)
+    st.write("As seen above in the bar chart, the Data Science Tech Lead position is clearly in the lead in terms of annual salary with \$375k, showing that a leadership position such as Data Science Tech Lead is a very well paying position, as also shown by the presence of other leadership or managerial positions such as Data Science Manager and Data Analytics Lead.")
+    st.write("On the other hand, the overall range of top 15 highest average annual salary is from \$163k to \$375k, with most top jobs here falling within the \$175k-\$215k range, such as Data Infrastructure Lead at \$175k to Data Lead at \$213k.")
 
 with tab2:
     st.markdown("#### 🗺️ *Job Market Saturation of Top 15 Highest Salary Professions*")
     st.write("- Pie chart showing the job market saturation of the top 15 professions with highest average salary")
-    st.write("- Over 50% of jobs within the market are Applied Scientist or Data Science Manager positions")
+    st.write("- Color coded based on profession")
     st.divider()
     display_job_market_saturation(currency_type)
+    st.write("As the pie chart shows, out of the top 15 highest average salary jobs, the two positions with the biggest slice of the pie, or the most saturated within the market are Applied Scientist and Data Science Manager, covering 29% of all positions each.")
+    st.write("Going off of the previous bar chart showing the average salaries of these two jobs, roughly 58% of the top job positions have an average annual salary of \$190k-\#191k.")
 
 with tab3:
     st.markdown("#### 🏢 *Correlation between Company Size and Salary*")
     st.write("- Bar chart showing the correlation between company size, and average salary of the job positions")
-    st.write("- Medium and large sized companies seem to have higher average salaries overall at \$192k/\$186k, with smaller companies offering lower salaries")
+    st.write("- S = Small, M = Medium, L = Large")
     st.divider()
     display_correlation_size_salary(currency_type)
+    st.write("Here, the bar chart shows the average salaries of companies based on their size. The main correlation that can be interpreted from the results here is that, medium and large-sized companies seem to have higher average salaries overall, at \$192k and \$186k respectively, while smaller companies have lower annual incomes for their job positions at \$159k.")
+    st.write("This does mean that job applicants may want to seek job positions within medium to large sized companies if they wish for higher salaries, on average.")
 
 with tab4:
     st.markdown("#### 🧑 *Average Salary by Experience Level and Employment Type*")
