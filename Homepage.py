@@ -55,6 +55,7 @@ salary_trend = df[['salary_in_usd', 'work_year']].sort_values(by='work_year')
 fig = px.line(salary_trend, x='work_year', y='salary_in_usd', title='Data Science Salary Trends Over Time')
 fig.update_traces(line=dict(dash='dash'))  # Show legend with title, add line markers, and set dash linestyle
 fig.update_layout(
+    height = 500,
     showlegend=True,
     legend_title="Salary Trends",
     xaxis_title="Work Year",
