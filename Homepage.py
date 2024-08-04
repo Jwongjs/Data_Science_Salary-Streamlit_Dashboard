@@ -55,12 +55,10 @@ salary_trend = df[['salary_in_usd', 'work_year']].sort_values(by='work_year')
 fig = px.line(salary_trend, x='work_year', y='salary_in_usd', title='Data Science Salary Trends Over Time')
 fig.update_traces(line=dict(dash='dash'))  # Show legend with title, add line markers, and set dash linestyle
 fig.update_layout(
-    height = 500,
     showlegend=True,
     legend_title="Salary Trends",
     xaxis_title="Work Year",
     yaxis_title="Salary in USD",
-    yaxis=dict(range=[0, 160000])  # Set the range for the y-axis
 )
 st.plotly_chart(fig)
 st.write("Within the dataset, it shows that there is an uphill trend since 2021. Subsequently, there are continual positive changes in salary from 2021 to 2022. Ultimately, despite the drop at the initial start of 2023, the steep uphill of trend in salary surge at an all-time high towards the end of the year.")
