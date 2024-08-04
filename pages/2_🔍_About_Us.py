@@ -11,6 +11,9 @@ st.set_page_config(
     layout="wide"
 )
 
+st.title("""Submitted by: 
+         Justin Wong Junn Sheng (0133519), Azran Afzal Bin Azri (0131249), Wan Muhammad Firdaus (0136035)""")
+
 #create columns for a side-by-side layout of the text and lottie animation
 col1, col2 = st.columns([1,1])
 
