@@ -62,7 +62,7 @@ fig.update_layout(
     yaxis=dict(range=[0, 200000])  # Set the range for the y-axis
 )
 st.plotly_chart(fig)
-st.write("Within the dataset, it shows that there is an uphill trend since 2020. Subsequently, there are continual slight positive changes in salary from 2021 to 2022. Ultimately, despite the drop at the initial start of 2023, the steep uphill of trend in salary surge at an all-time high towards the end of the year.")
+st.write("Within the dataset, at first it shows that there is an stagnant trend since 2020. Subsequently, there are continual positive changes in salary from 2021 to 2022. Ultimately, the steep uphill of trend in salary surge at an all-time high towards the end of the year 2023.")
 
 st.write("***As the demand for skilled data scientists continues to grow, it is important to understand salary trends in this field for:***")
 #1st point for salary trend importance
