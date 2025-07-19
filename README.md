@@ -1,20 +1,17 @@
-## Data_Science_Toolbox_Assignment
-Data visualization is now one of the cornerstones of data science, turning the abundance of big data produced by modern systems into actionable knowledge. Data visualization in the big data era raises the need to co-design and more closely align the underlying data management systems with the user-oriented techniques that state-of-the-art visualization systems now offer. Several solutions from those two communities are revisited with big data in mind, such as efficient data storage, adaptive indexing for enabling visual interaction and visual analytics, machine learning (ML)-driven visualization, new ways for visual presentation of massive data, and personalization and automation techniques that can fit different users' needs. Overall, modern visualization systems are starting to integrate scalable techniques to efficiently support complex ML-based analysis over billion-object datasets while limiting the visual response to a few milliseconds.
+# Data Science Salary Trends Dashboard
 
-This is an interactive dashboard using the open-source Python framework known as Streamlit. The topic should focus on ML-driven visualization, incorporating either supervised or unsupervised learning models. Be sure to include exploratory data analysis before applying any machine learning models.
+## Introduction
 
-**Report:**
+Welcome to our interactive dashboard for exploring salary trends in the data science industry. As data science becomes an increasingly vital field, understanding compensation is crucial for both aspiring and current professionals. This project aims to provide clear, actionable insights into the factors that influence data science salaries.
 
-1. Methodology 
+The data science platform market is projected to reach over **$500 billion by 2032**, highlighting the massive growth and opportunity in this sector. Our dashboard leverages a dataset of data science jobs to help users understand this landscape.
 
-It must be a complete, precise, unambiguous English description of the analysis you performed. This should be sufficient for someone else to write a Python or R program (or perform manual computations) that reproduces your results without accessing your source code and guessing or making significant design choices.
+## Features
 
-2. Implementation 
+This Streamlit application is divided into several key sections:
 
-The product you produce must be produced in Python or R for this assignment.
+*   **Descriptive Analytics:** Explore past salary patterns, including the highest-paying professions, the impact of company size, and how experience levels affect income.
+*   **Interactive World Map:** Visualize average salaries by country, allowing for a geographical comparison of compensation.
+*   **Salary Prediction:** Use our machine learning model to get an estimated salary based on factors like job title, country, experience level, and company size.
 
-It should be built to a good standard and fit for the intended purpose. The code should be well laid out and commented on and should use appropriate techniques.
-
-3. Results & Discussion 
-
-You explain and discuss the outcome of your implementation using descriptive statistics and visualizations as a result of the methodology [or methodologies] you applied. The results should simply state the findings without bias and be arranged in a logical sequence.
+This project was built using Python, with Streamlit for the interactive web application, Pandas for data manipulation, and Plotly for visualizations.
