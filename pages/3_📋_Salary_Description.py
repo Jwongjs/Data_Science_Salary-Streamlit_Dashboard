@@ -78,10 +78,14 @@ def display_job_market_saturation(currency_type):
         top_15_high_sal = df.groupby(["job_title"])["salary_in_myr"].mean().sort_values(ascending=False).head(15)
 
     job_market = df[df["job_title"].isin(top_15_high_sal.index)]
+
+    job_counts = job_market["job_title"].value_counts().reset_index()
+    job_counts.columns = ['job_title', 'count']
+
     #Can try sunburst chart
-    fig = px.pie(job_market, 
-                 values=job_market.job_title.value_counts().values, 
-                 names=job_market.job_title.value_counts().index, 
+    fig = px.pie(job_counts, 
+                 values='count', 
+                 names='job_title', 
                  height=600,
                  width=1200
                  )
