@@ -15,3 +15,5 @@ This Streamlit application is divided into several key sections:
 *   **Salary Prediction:** Use our machine learning model to get an estimated salary based on factors like job title, country, experience level, and company size.
 
 This project was built using Python, with Streamlit for the interactive web application, Pandas for data manipulation, and Plotly for visualizations.
+
+Accessible in: https://data-science-salary.streamlit.app/
